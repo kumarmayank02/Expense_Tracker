@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Transactions</h2>
+
+<form method="POST" class="mb-3">
+  {{ form.hidden_tag() }}
+  Category: {{ form.category(class="form-control d-inline w-auto") }}
+  Start: {{ form.start_date(class="form-control d-inline w-auto") }}
+  End: {{ form.end_date(class="form-control d-inline w-auto") }}
+  Sort By: {{ form.sort_by(class="form-control d-inline w-auto") }}
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+
+<a href="{{ url_for('add_transaction') }}" class="btn btn-success mb-2">Add Transaction</a>
+<table class="table table-bordered">
+<tr><th>Date</th><th>Title</th><th>Category</th><th>Type</th><th>Amount</th><th>Actions</th></tr>
+{% for t in transactions %}
+<tr>
+  <td>{{ t.date }}</td>
+  <td>{{ t.title }}</td>
+  <td>{{ t.category }}</td>
+  <td>{{ t.type }}</td>
+  <td>{{ t.amount }}</td>
+  <td>
+    <a href="{{ url_for('edit_transaction', tx_id=t.id) }}" class="btn btn-sm btn-primary">Edit</a>
+    <form method="POST" action="{{ url_for('delete_transaction', tx_id=t.id) }}" style="display:inline;">
+      <button onclick="return confirm('Delete?')" class="btn btn-sm btn-danger">Delete</button>
+    </form>
+  </td>
+</tr>
+{% else %}
+<tr><td colspan="6">No transactions</td></tr>
+{% endfor %}
+</table>
+{% endblock %}

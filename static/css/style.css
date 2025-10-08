@@ -1,0 +1,81 @@
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    background-color: #fff;
+}
+
+.card h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 5px #764ba2;
+    border-color: #764ba2;
+}
+
+.btn-primary {
+    width: 100%;
+    background: #764ba2;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #667eea;
+}
+
+.form-text {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+/* It is for Login UI */
+body {
+  background: linear-gradient(to right, #74ebd5, #ACB6E5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card {
+  background-color: #fff;
+}
+
+.form-control {
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #007bff, #00bfff);
+  border: none;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #00bfff, #007bff);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* FOR HOME PAGE CSS */
+

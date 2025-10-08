@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Dashboard</h2>
+<div class="row mb-3">
+  <div class="col"><div class="card p-3"><h5>Total Income</h5><h3>₹ {{ total_income }}</h3></div></div>
+  <div class="col"><div class="card p-3"><h5>Total Expense</h5><h3>₹ {{ total_expense }}</h3></div></div>
+  <div class="col"><div class="card p-3"><h5>Balance</h5><h3>₹ {{ balance }}</h3></div></div>
+</div>
+
+<a href="{{ url_for('transactions') }}" class="btn btn-primary mb-3">View Transactions</a>
+
+<h3>Monthly Totals</h3>
+<canvas id="monthlyChart"></canvas>
+
+<h3>Category Totals</h3>
+<canvas id="categoryChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+const monthlyLabels = [{% for m, _ in monthly_totals %}'{{ m }}',{% endfor %}];
+const monthlyData = [{% for _, total in monthly_totals %}{{ total }},{% endfor %}];
+const ctx1 = document.getElementById('monthlyChart').getContext('2d');
+new Chart(ctx1, { type: 'line', data: { labels: monthlyLabels, datasets: [{ label: 'Monthly Expenses', data: monthlyData, borderColor: 'blue', fill:false }] } });
+
+const categoryLabels = [{% for cat, _ in category_totals %}'{{ cat }}',{% endfor %}];
+const categoryData = [{% for _, total in category_totals %}{{ total }},{% endfor %}];
+const ctx2 = document.getElementById('categoryChart').getContext('2d');
+new Chart(ctx2, { type: 'pie', data: { labels: categoryLabels, datasets: [{ label: 'Category-wise', data: categoryData, backgroundColor: ['red','green','blue','orange','purple']] } } });
+</script>
+{% endblock %}
